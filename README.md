@@ -22,34 +22,54 @@ This tutorial outlines the prerequisites and installation of the open-source hel
 
 <h2>List of Prerequisites</h2>
 
-- Item 1
-- Item 2
-- Item 3
-- Item 4
-- Item 5
+- Deploy osTicket virtual machine and network
+- Install osTicket installation file; unzip/extract file
+- Enable Information Internet Services(IIS) with CGI; multiple folders will be accessed here
+- Install and launch MySQL Server; create username and password
+- Install HeidiSQL
 
 <h2>Installation Steps</h2>
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="1139" alt="Screenshot 2024-12-22 at 11 20 49 AM" src="https://github.com/user-attachments/assets/cf68bc9a-6686-4880-83cc-54ecf9aebf04" />
+
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Step 1: Create and Prepare the Virtual Machine
+Create an Azure Virtual Machine (VM) with the following details:
+Name: osticket-vm, OS: Windows 10, Specs: 4 vCPUs, Create Username & Password,
+Use Remote Desktop to log into the VM.
+Download and unzip the osTicket-Installation-Files.zip onto the VM’s desktop into a folder named osTicket-Installation-Files.
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img width="976" alt="Screenshot 2024-12-16 at 12 05 05 PM" src="https://github.com/user-attachments/assets/fb6139cb-76d4-4070-909c-c542b7188622" />
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+Step 2: Install IIS, PHP, and MySQL
+Enable IIS with CGI (World Wide Web Services > Application Development Features > CGI).
+From the osTicket-Installation-Files folder, install:
+PHP Manager for IIS (PHPManagerForIIS_V1.5.0.msi).
+Rewrite Module (rewrite_amd64_en-US.msi).
+VC_redist.x86.exe and MySQL 5.5.62 (Create Username & Password).
+Unzip PHP 7.3.8 into C:\PHP, then register it in IIS (PHP Manager > C:\PHP\php-cgi.exe).
+Reload IIS by stopping and starting the server.
+
 </p>
 <br />
+<img width="828" alt="Screenshot 2024-12-16 at 12 29 45 PM" src="https://github.com/user-attachments/assets/cdbf5423-5992-4515-b04c-12deaece00fa" />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Step 3: Install and Configure osTicket
+Unzip osTicket-v1.15.8.zip, move the "upload" folder to C:\inetpub\wwwroot, and rename it to osTicket.
+Enable PHP extensions in IIS (php_imap.dll, php_intl.dll, php_opcache.dll), and reload IIS.
+Rename and assign permissions to ost-config.php as instructed, then set up osTicket in the browser:
+Database: osTicket, Username: root, Password: root.
+Finalize installation by creating a database with HeidiSQL, clean up setup files, and set permissions to "Read-Only" for ost-config.php. Access your helpdesk at http://localhost/osTicket!
 </p>
 <br />
